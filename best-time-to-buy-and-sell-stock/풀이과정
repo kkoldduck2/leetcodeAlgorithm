@@ -1,0 +1,73 @@
+## 나의 풀이
+
+```java
+class Solution {
+    public int maxProfit(int[] prices) {
+        List<Integer> profits = new ArrayList<>();
+        
+        for(int i=0; i<prices.length-1; i++){
+            for(int j=i+1; j<prices.length; j++){
+                profits.add(prices[j]-prices[i]);
+            }
+        }
+        
+        Collections.sort(profits);
+        if(profits.size()==1){
+            return 0;
+        }
+        int result = profits.get(profits.size()-1);
+        
+        if(result < 0) return 0;
+        
+        return profits.get(profits.size()-1);
+    }
+}
+```
+
+메모리 초과.. → 굳이 저장할 필요 없음
+
+Brute Force
+
+```java
+class Solution {
+    public int maxProfit(int[] prices) {
+        
+        int maxprofit = 0;
+        for(int i=0; i<prices.length-1; i++){
+            for(int j=i+1; j<prices.length; j++){
+                int profit = prices[j]-prices[i];
+                maxprofit = maxprofit < profit ? profit : maxprofit;
+            }
+        }
+        
+       return maxprofit;
+    }
+}
+```
+
+**Complexity Analysis**
+
+- Time complexity : *O*(*n*2). Loop runs n(n-1)/2 times.
+- Space complexity : (1). Only two variables - `maxprofit` and `profit` are used
+
+## 해설
+
+![https://leetcode.com/media/original_images/121_profit_graph.png](https://leetcode.com/media/original_images/121_profit_graph.png)
+
+The points of interest are the peaks and valleys in the given graph. We need to find the largest peak following the smallest valley. We can maintain two variables - minprice and maxprofit corresponding to the smallest valley and maximum profit (maximum difference between selling price and minprice) obtained so far respectively.
+
+```java
+public class Solution {
+    public int maxProfit(int prices[]) {
+        int minprice = Integer.MAX_VALUE;
+        int maxprofit = 0;
+        for (int i = 0; i < prices.length; i++) {
+            if (prices[i] < minprice)
+                minprice = prices[i];
+            else if (prices[i] - minprice > maxprofit)
+                maxprofit = prices[i] - minprice;
+        }
+        return maxprofit;
+    }
+}
+```
