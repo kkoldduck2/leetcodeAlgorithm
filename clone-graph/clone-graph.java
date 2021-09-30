@@ -20,7 +20,7 @@ class Node {
 
 class Solution {
     HashMap<Integer, Node> hm = new HashMap<>();
-    public Node clonelogic(Node node){
+    public Node cloneGraph(Node node){
         if (node == null) return null;
         if(hm.containsKey(node.val)){
             return hm.get(node.val);
@@ -30,12 +30,9 @@ class Solution {
         
         hm.put(myNode.val, myNode);
         for(Node nb : node.neighbors){
-            myNode.neighbors.add(clonelogic(nb));
+            myNode.neighbors.add(cloneGraph(nb));
         }
         
         return myNode;
-    }
-    public Node cloneGraph(Node node) {
-        return clonelogic(node);
     }
 }
