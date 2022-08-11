@@ -1,5 +1,6 @@
 import java.util.*;
 class Solution {
+    // target보다 (작거나) 같은 값이 처음으로 나오는 인덱스 리턴
     public static int lowerBound(int[] nums, int target) {
 		int low = 0;
 		int high = nums.length;
@@ -14,6 +15,8 @@ class Solution {
 		}
 		return high;
 	}
+    
+    // target보다 (크거나) 같은 값이 처음으로 나오는 인덱스 리턴
     public static int upperBound(int[] nums, int target) {
 		int low = 0;
 		int high = nums.length;
