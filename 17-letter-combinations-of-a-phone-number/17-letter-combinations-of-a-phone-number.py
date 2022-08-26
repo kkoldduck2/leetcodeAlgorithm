@@ -6,11 +6,8 @@ class Solution:
                 result.append(path)
                 return
 
-            # 입력값 자릿수 단위 반복
-            for i in range(index, len(digits)):
-                # 숫자에 해당하는 모든 문자열 반복
-                for j in dict[digits[i]]:
-                    dfs(i+1, path+j)
+            for j in dict[digits[index]]:
+                dfs(index+1, path+j)
 
         # 예외 처리
         if not digits:
