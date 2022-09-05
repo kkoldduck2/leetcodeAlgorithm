@@ -27,7 +27,7 @@ class Solution:
         while rev and rev.val == slow.val:
             slow, rev = slow.next, rev.next
         
-        return rev == None  # rev == None이니
+        return not rev  # rev == None이니
         
         
         
