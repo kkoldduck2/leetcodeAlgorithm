@@ -7,10 +7,7 @@ class Solution:
             hq.heappush(a, (dist,p[0],p[1]))
 
         rst = []
-        before_dist, bx, by = hq.heappop(a);
-        rst.append([bx, by])
-
-        while k>1:
+        while k>0:
             print(k)
             dist, x, y = hq.heappop(a)
             # print(dist, x, y)
