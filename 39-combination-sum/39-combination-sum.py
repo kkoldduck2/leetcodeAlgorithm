@@ -13,6 +13,7 @@ class Solution:
                 rst.pop()
 
         ans = []
-        for i in range(len(candidates)):
-            dfs(i, candidates[i], [candidates[i]])
+        dfs(0,0,[])
+        # for i in range(len(candidates)):
+        #     dfs(i, candidates[i], [candidates[i]])
         return ans
